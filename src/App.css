@@ -1,1 +1,39 @@
 /* Other rules */
+
+.header {
+  border: solid 2px black;
+}
+
+.container {
+  margin: 2%;
+  border: solid 2px black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Home Page */
+
+.game-card {
+  display: flex;
+  width: 400px;
+  height: 250px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: rgb(170, 164, 164);
+  margin: 10px;
+}
+
+.game-card img {
+  object-fit: cover;
+  width: 400px;
+  height: 250px;
+
+  border-radius: 15px;
+}
+
+.game-card h2 {
+  position: absolute;
+  margin: 5px;
+  font-size: x-large;
+}
