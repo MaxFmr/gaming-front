@@ -7,11 +7,14 @@ const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [platforms, setPlatforms] = useState();
+  const [platformFilter, setPlatformFilter] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/games");
+        const response = await axios.get(
+          `http://localhost:3000/games?platforms=${platformFilter}`
+        );
         console.log(response.data);
         setData(response.data);
 
@@ -32,26 +35,30 @@ const Home = () => {
 
     fetchData();
     fetchPlaforms();
-  }, []);
+  }, [platformFilter]);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
     <>
       <Header />
-      <select name="pets" id="pet-select">
-        <option value="">--Please choose a platform--</option>
+      <select
+        onChange={(event) => setPlatformFilter(event.target.value)}
+        name='pets'
+        id='pet-select'
+      >
+        <option value=''>--Please choose a platform--</option>
 
         {platforms.results.map((platform, index) => {
           return (
-            <option key={index} value={platform.name}>
+            <option key={index} value={platform.id}>
               {platform.name}
             </option>
           );
         })}
       </select>
 
-      <div className="container">
+      <div className='container'>
         {data.results.map((games, index) => {
           return <GameCard games={games} id={games.slug} key={index} />;
         })}
