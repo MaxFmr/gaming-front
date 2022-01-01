@@ -11,16 +11,30 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/games?platforms=${platformFilter}`
-        );
-        console.log(response.data);
-        setData(response.data);
+      if (platformFilter !== undefined) {
+        console.log("1");
 
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/games/?platforms=${platformFilter}`
+          );
+          console.log(response.data);
+          setData(response.data);
+
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error.message);
+        }
+      } else {
+        try {
+          const response = await axios.get(`http://localhost:3000/games/`);
+          console.log(response.data);
+          setData(response.data);
+
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error.message);
+        }
       }
     };
     const fetchPlaforms = async () => {
