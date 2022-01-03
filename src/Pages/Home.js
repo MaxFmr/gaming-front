@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -74,7 +75,11 @@ const Home = () => {
 
       <div className='container'>
         {data.results.map((games, index) => {
-          return <GameCard games={games} id={games.slug} key={index} />;
+          return (
+            <Link to={`/game/${games.id}`}>
+              <GameCard games={games} id={games.slug} key={index} />;
+            </Link>
+          );
         })}
       </div>
     </>

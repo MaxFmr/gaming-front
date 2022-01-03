@@ -37,3 +37,48 @@
   margin: 5px;
   font-size: x-large;
 }
+
+/* Game Page */
+
+.game-container {
+  border: springgreen solid 2px;
+  height: 1024px;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-image {
+  border: pink solid 2px;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  overflow: scroll;
+  border-radius: 15px;
+}
+
+.percent-appreciation {
+  position: absolute;
+  width: 40%;
+  margin: 10px;
+}
+
+.game-image img {
+  height: 100%;
+  width: 98%;
+  object-fit: cover;
+  margin-right: 2px;
+  border-radius: 15px;
+}
+
+.game-details {
+  width: 40%;
+  border: blue solid 2px;
+  display: flex;
+  height: 100%;
+}
+
+.img-details {
+  border: black solid 2px;
+  display: flex;
+  height: 40%;
+}
