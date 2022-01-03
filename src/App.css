@@ -49,7 +49,7 @@
 
 .game-image {
   border: pink solid 2px;
-  width: 40%;
+  width: 60%;
   height: 100%;
   display: flex;
   overflow: scroll;
@@ -74,11 +74,37 @@
   width: 40%;
   border: blue solid 2px;
   display: flex;
-  height: 100%;
 }
 
 .img-details {
   border: black solid 2px;
   display: flex;
-  height: 40%;
+  height: 50%;
+}
+
+.serie-caroussel {
+  border: brown 2px solid;
+  height: 260px;
+  display: flex;
+  overflow: scroll;
+  margin: 10px;
+}
+
+.serie-caroussel img {
+  height: 95%;
+  margin: 5px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.caroussel-card {
+  display: flex;
+  flex-direction: column;
+
+  border: cadetblue 2px solid;
+  height: 100%;
+}
+
+.caroussel-card h2 {
 }

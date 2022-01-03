@@ -18,7 +18,7 @@ const GameCard = ({ id, games }) => {
   };
 
   return (
-    <>
+    <div>
       <div
         onMouseEnter={() => {
           setOver(true);
@@ -27,20 +27,20 @@ const GameCard = ({ id, games }) => {
         onMouseLeave={() => {
           setOver(false);
         }}
-        className="game-card"
+        className='game-card'
       >
         {over && movie && movie.length > 0 ? (
-          <video controls height="100%" width="100%" autoPlay muted>
-            <source src={movie[0].data["480"]} type="video/mp4"></source>
+          <video controls height='100%' width='100%' autoPlay muted>
+            <source src={movie[0].data["480"]} type='video/mp4'></source>
           </video>
         ) : (
-          <>
+          <div>
             <h2>{games.name}</h2>
-            <img src={games.background_image} alt="" />
-          </>
+            <img src={games.background_image} alt=''></img>
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
