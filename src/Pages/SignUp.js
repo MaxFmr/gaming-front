@@ -16,7 +16,7 @@ const Signup = ({ setUser }) => {
       password.match(/[a-z]/g) &&
       password.match(/[A-Z]/g) &&
       password.match(/[^a-zA-Z\d]/g) &&
-      password.length >= 10
+      password.length >= 8
     ) {
       setPasswordValidate(true);
     }
@@ -28,27 +28,31 @@ const Signup = ({ setUser }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    passwordValidate && console.log("sub");
     event.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("email", email);
-      formData.append("username", username);
-      formData.append("avatar", file);
-      formData.append("password", password);
 
-      const response = await axios.post(
-        "http://localhost:3000/signup",
+    if (passwordValidate === true) {
+      try {
+        const formData = new FormData();
+        formData.append("email", email);
+        formData.append("username", username);
+        formData.append("avatar", file);
+        formData.append("password", password);
 
-        formData
-      );
-      if (response.data.token) {
-        setUser(response.data.token);
-        navigate("/");
+        const response = await axios.post(
+          "http://localhost:3000/signup",
+
+          formData
+        );
+        if (response.data.token) {
+          setUser(response.data.token);
+          navigate("/");
+        }
+      } catch (error) {
+        alert(error.message);
+        console.log(error.message);
       }
-    } catch (error) {
-      alert(error.message);
-      console.log(error.message);
+    } else {
+      alert("Your password might be stronger.");
     }
   };
 
@@ -123,8 +127,8 @@ const Signup = ({ setUser }) => {
           {password.match(/[^a-zA-Z\d]/g) && (
             <span style={{ color: "green" }}>ok</span>
           )}
-          <p>10 characters</p>
-          {password.length >= 10 && <span style={{ color: "green" }}>ok</span>}
+          <p>8 characters</p>
+          {password.length >= 8 && <span style={{ color: "green" }}>ok</span>}
         </div>
         <div>
           <input
