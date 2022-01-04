@@ -8,6 +8,19 @@ const Signup = ({ setUser }) => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [file, setFile] = useState({});
+  const [passwordValidate, setPasswordValidate] = useState(false);
+
+  const validate = () => {
+    if (
+      password.match(/[0-9]/g) &&
+      password.match(/[a-z]/g) &&
+      password.match(/[A-Z]/g) &&
+      password.match(/[^a-zA-Z\d]/g) &&
+      password.length >= 10
+    ) {
+      setPasswordValidate(true);
+    }
+  };
 
   const formData = new FormData();
   formData.append("avatar", file);
@@ -15,7 +28,7 @@ const Signup = ({ setUser }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    console.log("sub");
+    passwordValidate && console.log("sub");
     event.preventDefault();
     try {
       const formData = new FormData();
@@ -44,13 +57,13 @@ const Signup = ({ setUser }) => {
       <form onSubmit={handleSubmit}>
         <h1>Sign up</h1>
         <div>
-          {" "}
           <input
             type='text'
             placeholder='Username'
             onChange={(event) => {
               setUsername(event.target.value);
             }}
+            required
           />
         </div>
         <div>
@@ -60,6 +73,7 @@ const Signup = ({ setUser }) => {
             onChange={(event) => {
               setEmail(event.target.value);
             }}
+            required
           />
         </div>
         <div>
@@ -68,8 +82,11 @@ const Signup = ({ setUser }) => {
             placeholder='Password'
             onChange={(event) => {
               setPassword(event.target.value);
+              validate();
+
               console.log(password);
             }}
+            required
           />
         </div>
         <div>
@@ -80,12 +97,39 @@ const Signup = ({ setUser }) => {
               setPassword2(event.target.value);
               console.log(password2);
             }}
+            required
           />
+          {password !== password2 && (
+            <div>
+              <p style={{ color: "red" }}>The two passwords are differents</p>
+            </div>
+          )}
+        </div>
+        <div>
+          <span>Your password must contain at least :</span>
+          <p>one uppercase letter</p>
+          {password.match(/[A-Z]/g) && (
+            <span style={{ color: "green" }}>ok</span>
+          )}
+          <p>one lowercase letter</p>
+          {password.match(/[a-z]/g) && (
+            <span style={{ color: "green" }}>ok</span>
+          )}
+          <p>one number</p>
+          {password.match(/[0-9]/g) && (
+            <span style={{ color: "green" }}>ok</span>
+          )}
+          <p>one special character</p>
+          {password.match(/[^a-zA-Z\d]/g) && (
+            <span style={{ color: "green" }}>ok</span>
+          )}
+          <p>10 characters</p>
+          {password.length >= 10 && <span style={{ color: "green" }}>ok</span>}
         </div>
         <div>
           <input
             type='file'
-            placeholder='Confirm your password'
+            placeholder='choose an avatar'
             onChange={(event) => {
               setFile(event.target.files[0]);
               console.log("file uploaded");
