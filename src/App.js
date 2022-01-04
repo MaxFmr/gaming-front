@@ -7,15 +7,30 @@ import AddReview from "./Pages/AddReview";
 import Favorites from "./Pages/Favorites";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import Header from "../src/components/Header";
+import Cookies from "js-cookie";
+import { useState } from "react";
 
 function App() {
+  const [token, setToken] = useState(Cookies.get("userToken") || null);
+
+  const setUser = (token) => {
+    if (token) {
+      Cookies.set("userToken", token, { expires: 10 });
+    } else {
+      Cookies.remove("userToken");
+    }
+    setToken(token);
+  };
+
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/game/:id' element={<Game />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login setUser={setUser} />} />
+        <Route path='/signup' element={<SignUp setUser={setUser} />} />
         <Route path='/addreview' element={<AddReview />} />
         <Route path='/favorites' element={<Favorites />} />
       </Routes>

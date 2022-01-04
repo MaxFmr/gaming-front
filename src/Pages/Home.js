@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard";
@@ -13,20 +12,31 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (platformFilter !== undefined) {
-        console.log("1");
-
         try {
           const response = await axios.get(
             `http://localhost:3000/games/?platforms=${platformFilter}`
           );
           console.log(response.data);
           setData(response.data);
-
+        } catch (error) {
+          console.log(error.message);
+        }
+        try {
+          const response = await axios.get("http://localhost:3000/platforms");
+          console.log(response.data);
+          setPlatforms(response.data);
           setIsLoading(false);
         } catch (error) {
           console.log(error.message);
         }
       } else {
+        try {
+          const response = await axios.get("http://localhost:3000/platforms");
+          console.log(response.data);
+          setPlatforms(response.data);
+        } catch (error) {
+          console.log(error.message);
+        }
         try {
           const response = await axios.get(`http://localhost:3000/games/`);
           console.log(response.data);
@@ -38,25 +48,14 @@ const Home = () => {
         }
       }
     };
-    const fetchPlaforms = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/platforms");
-        console.log(response.data);
-        setPlatforms(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
 
     fetchData();
-    fetchPlaforms();
   }, [platformFilter]);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
     <>
-      <Header />
       <select
         onChange={(event) => setPlatformFilter(event.target.value)}
         name='pets'
@@ -77,7 +76,7 @@ const Home = () => {
         {data.results.map((games, index) => {
           return (
             <Link to={`/game/${games.id}`}>
-              <GameCard games={games} id={games.slug} key={index} />;
+              <GameCard games={games} id={games.slug} key={index} />
             </Link>
           );
         })}
