@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 
-const Login = ({ setUser, token }) => {
+const Login = ({ setUser, token, setUserData }) => {
   const navigate = useNavigate("/");
 
   //   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +20,7 @@ const Login = ({ setUser, token }) => {
       if (response.data.token) {
         console.log(response);
         setUser(response.data.token);
+        setUserData(response.data);
       }
     } catch (error) {
       console.log(error.message);

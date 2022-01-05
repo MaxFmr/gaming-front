@@ -28,13 +28,13 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/game/:id' element={<Game />} />
+        <Route path='/game/:id' element={<Game token={token} />} />
         <Route
           path='/login'
           element={<Login token={token} setUser={setUser} />}
         />
         <Route path='/signup' element={<SignUp setUser={setUser} />} />
-        <Route path='/addreview' element={<AddReview />} />
+        <Route path='/addreview/:id' element={<AddReview token={token} />} />
         <Route path='/favorites' element={<Favorites />} />
       </Routes>
     </Router>

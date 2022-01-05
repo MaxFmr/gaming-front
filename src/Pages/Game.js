@@ -1,16 +1,18 @@
 import axios from "axios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import SerieCaroussel from "../components/SerieCaroussel";
 import Reviews from "../components/Reviews";
 
-const Game = () => {
+const Game = ({ token }) => {
   const [data, setData] = useState();
   const [serie, setSerie] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +42,15 @@ const Game = () => {
   ) : (
     <>
       <div className='game-container'>
+        <button
+          onClick={() => {
+            {
+              token ? navigate(`/addreview/${id}`) : navigate("/login");
+            }
+          }}
+        >
+          Add a review
+        </button>
         <div className='img-details'>
           <div className='game-image'>
             <div className='percent-appreciation'>
