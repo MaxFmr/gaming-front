@@ -15,14 +15,19 @@ const AddReview = ({ token }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/review/create", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await axios.post(
+        "http://localhost:3000/review/create",
+        {
+          review: review,
+          note,
+          gameId: id,
         },
-        review: review,
-        note,
-        gameId: id,
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
