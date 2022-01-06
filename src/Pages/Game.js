@@ -74,7 +74,7 @@ const Game = ({ token }) => {
           </div>
         </div>
         <SerieCaroussel serie={serie} />
-        <Reviews />
+        <Reviews id={id} />
       </div>
     </>
   );

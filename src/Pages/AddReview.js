@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 
 const AddReview = ({ token }) => {
-  console.log(token);
+  const navigate = useNavigate();
   const [review, setReview] = useState();
   const [note, setNote] = useState();
 
@@ -29,6 +30,9 @@ const AddReview = ({ token }) => {
         }
       );
       console.log(response.data);
+      response.data.message === "review created"
+        ? navigate(`/game/${id}`)
+        : alert(response.data.message);
     } catch (error) {
       console.log(error.message);
     }
