@@ -5,8 +5,9 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <button onClick={() => navigate("/signup")}>Sign Up</button>
       <button onClick={() => navigate("/login")}>Login</button>
+      <button onClick={() => navigate("/signup")}>Sign Up</button>
+      <button onClick={() => navigate("/")}>Home</button>
     </div>
   );
 };

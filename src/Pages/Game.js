@@ -37,6 +37,30 @@ const Game = ({ token }) => {
     fetchData();
   }, [id]);
 
+  const addFavorite = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/favorites/create",
+        {
+          game: { data },
+          img: data.background_image,
+          name: data.name,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      response.data.message === "Favorite created"
+        ? alert(response.data.message)
+        : alert(response.data.message);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
@@ -50,6 +74,15 @@ const Game = ({ token }) => {
           }}
         >
           Add a review
+        </button>
+        <button
+          onClick={() => {
+            {
+              token ? addFavorite() : navigate("/login");
+            }
+          }}
+        >
+          Add to favorites
         </button>
         <div className='img-details'>
           <div className='game-image'>
