@@ -5,6 +5,20 @@ const Reviews = ({ id }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
+  const like = async (_id, event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(`http://localhost:3000/review/update`, {
+        _id,
+      });
+      console.log(response.data);
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
