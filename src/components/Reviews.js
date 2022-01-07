@@ -5,15 +5,12 @@ const Reviews = ({ id }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const like = async (_id, event) => {
-    event.preventDefault();
+  const like = async (_id) => {
     try {
-      const response = await axios.post(`http://localhost:3000/review/update`, {
+      const response = await axios.post(`http://localhost:3000/review/like`, {
         _id,
       });
       console.log(response.data);
-      setData(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
@@ -45,6 +42,16 @@ const Reviews = ({ id }) => {
             <h3>{review.username}</h3>
             <h3>{review.note}</h3>
             <p>{review.review}</p>
+            <p>{review.likes}</p>
+            <button
+              onClick={() => {
+                console.log(review._id);
+                like(review._id);
+              }}
+            >
+              like
+            </button>
+            <p>{review.likes}</p>
           </div>
         );
       })}
