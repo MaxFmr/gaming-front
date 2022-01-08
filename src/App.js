@@ -35,7 +35,7 @@ function App() {
         />
         <Route path='/signup' element={<SignUp setUser={setUser} />} />
         <Route path='/addreview/:id' element={<AddReview token={token} />} />
-        <Route path='/favorites' element={<Favorites />} />
+        <Route path='/favorites' element={<Favorites token={token} />} />
       </Routes>
     </Router>
   );
