@@ -9,6 +9,7 @@ const Signup = ({ setUser }) => {
   const [password2, setPassword2] = useState("");
   const [file, setFile] = useState({});
   const [passwordValidate, setPasswordValidate] = useState(false);
+  const [error, setError] = useState();
 
   const validate = () => {
     if (
@@ -43,6 +44,9 @@ const Signup = ({ setUser }) => {
 
           formData
         );
+        console.log(response.data);
+        setError(response.data.errorMessage);
+
         if (response.data.token) {
           setUser(response.data.token);
           navigate("/");
@@ -87,8 +91,6 @@ const Signup = ({ setUser }) => {
             onChange={(event) => {
               setPassword(event.target.value);
               validate();
-
-              console.log(password);
             }}
             required
           />
@@ -99,7 +101,6 @@ const Signup = ({ setUser }) => {
             placeholder='Confirm your password'
             onChange={(event) => {
               setPassword2(event.target.value);
-              console.log(password2);
             }}
             required
           />
@@ -129,6 +130,7 @@ const Signup = ({ setUser }) => {
           )}
           <p>8 characters</p>
           {password.length >= 8 && <span style={{ color: "green" }}>ok</span>}
+          {error ? <div style={{ color: "red" }}>{error}</div> : <div></div>}
         </div>
         <div>
           <input
