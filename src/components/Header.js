@@ -12,6 +12,7 @@ const Header = ({ token, setUser }) => {
         }}
       >
         <h1 style={{ fontWeight: "bold", fontSize: "50px" }}>GAMING</h1>
+        <p>db</p>
       </div>
       <div>
         {token ? (

@@ -19,6 +19,8 @@ const GameCard = ({ id, games }) => {
 
   return (
     <div>
+      {games === undefined ? <div>loading...</div> : <div></div>}
+
       <div
         onMouseEnter={() => {
           setOver(true);

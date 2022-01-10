@@ -1,8 +1,25 @@
 /* Other rules */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+input::-webkit-input-placeholder {
+  color: rgb(210, 204, 204) !important;
+}
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: white !important;
+}
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: white !important;
+}
+input:-ms-input-placeholder {
+  color: white !important;
+}
 
 button {
   cursor: pointer;
+}
+button:hover {
+  background-color: grey;
 }
 
 body {
@@ -35,17 +52,17 @@ body {
 }
 
 .welcome-container {
-  border: salmon 2px solid;
   display: flex;
 }
 
 .halo {
   height: 600px;
   width: 230px;
-  margin: auto;
   object-fit: cover;
   position: absolute;
   margin-left: 130px;
+  z-index: 2;
+  margin-bottom: 100px;
 }
 .gta {
   margin-left: 200px;
@@ -53,8 +70,34 @@ body {
   margin-top: 10px;
   margin-bottom: 0px;
 }
+
+.mew {
+  position: absolute;
+  height: 400px;
+  z-index: 1;
+  margin-left: 250px;
+  margin-top: 80px;
+}
 .welcome-txt {
-  border: skyblue solid 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-txt h2 {
+  font-size: xx-large;
+  font-weight: bold;
+}
+.welcome-txt button {
+  border: black solid 2px;
+  color: white;
+  background-color: #17171b;
+  font-size: x-large;
+  margin: 20px;
+  border-radius: 15px;
+}
+.welcome-txt button:hover {
+  background-color: grey;
 }
 
 /* header component */
@@ -80,13 +123,60 @@ body {
 
 .container {
   margin: 2%;
-  border: solid 2px black;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Home Page */
+
+.search {
+  display: flex;
+  /* flex-direction: column; */
+  width: 370px;
+  margin-right: 50px;
+  align-items: center;
+  font-size: x-large;
+}
+
+.searchbar ::placeholder {
+  color: white;
+}
+
+.search input {
+  height: 30px;
+  width: 170px;
+  margin: 15px;
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding-left: 10px;
+}
+.search select {
+  border: none;
+  border-radius: 15px;
+  color: white;
+
+  height: 30px;
+  width: 180px;
+  margin: 15px;
+  background-color: grey;
+}
+
+.search button {
+  border: none;
+  border-radius: 15px;
+  color: white;
+
+  height: 30px;
+  width: 180px;
+  margin: 15px;
+  background-color: grey;
+}
+.search button:hover {
+  background-color: rgb(193, 193, 193);
+}
 
 .game-card {
   display: flex;

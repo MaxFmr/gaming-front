@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import Search from "../components/Search";
 const Home = ({ token, setUser }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -71,59 +72,23 @@ const Home = ({ token, setUser }) => {
   };
 
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <span>Loading...</span>
   ) : (
     <>
       <Header token={token} setUser={setUser} />
 
-      <select
-        onChange={(event) => setPlatformFilter(event.target.value)}
-        name='platforms'
-        id='platform-select'
-      >
-        <option value=''>--Please choose a platform--</option>
-
-        {platforms.results.map((platform, index) => {
-          return (
-            <option key={index} value={platform.id}>
-              {platform.name}
-            </option>
-          );
-        })}
-      </select>
-      <select
-        onChange={(event) => setOrdering(event.target.value)}
-        name='platforms'
-        id='platform-select'
-      >
-        <option value=''>--Ordered by :--</option>
-
-        <option value='name'>name</option>
-        <option value='released'>released</option>
-        <option value='added'>added</option>
-        <option value='created'>created</option>
-        <option value='rating'>rating</option>
-      </select>
-      <input
-        type='text'
-        onChange={(event) => {
-          setSearch(event.target.value);
-        }}
-      />
-      <input
-        type='date'
-        onChange={(event) => {
-          setDateFrom(event.target.value);
-        }}
-      />
-      <input
-        type='date'
-        onChange={(event) => {
-          setDateTo(event.target.value);
-        }}
-      />
-
       <div className='container'>
+        <Search
+          setSearch={setSearch}
+          setPlatformFilter={setPlatformFilter}
+          platforms={platforms}
+          setOrdering={setOrdering}
+          setDateFrom={setDateFrom}
+          setDateTo={setDateTo}
+        />
+        {data.count === 0 && (
+          <div>No game's matching with your research...</div>
+        )}
         {data.results.map((games, index) => {
           return (
             <Link to={`/game/${games.id}`}>
@@ -132,22 +97,20 @@ const Home = ({ token, setUser }) => {
           );
         })}
       </div>
-      <div>
-        <select
-          onChange={(event) => setPageSize(event.target.value)}
-          name='page-size'
-          id='size-select'
-        >
-          <option value=''>--Results per page : 20</option>
-          <option value='40'>--Results per page : 40</option>;
-        </select>
-        <button onClick={folowingPage}>Page suivante</button>
-        {page > 1 ? (
-          <button onClick={previousPage}>Page précédente</button>
-        ) : (
-          <div></div>
-        )}
-      </div>
+      {data.count > 0 && (
+        <div className='search'>
+          <select
+            onChange={(event) => setPageSize(event.target.value)}
+            name='page-size'
+            id='size-select'
+          >
+            <option value=''>--Results per page : 20</option>
+            <option value='40'>--Results per page : 40</option>;
+          </select>
+          {page > 1 ? <button onClick={previousPage}>⬅</button> : <div></div>}
+          <button onClick={folowingPage}>Next</button>
+        </div>
+      )}
     </>
   );
 };
