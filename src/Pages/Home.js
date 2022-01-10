@@ -8,6 +8,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [platforms, setPlatforms] = useState();
   const [platformFilter, setPlatformFilter] = useState();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +39,9 @@ const Home = () => {
           console.log(error.message);
         }
         try {
-          const response = await axios.get(`http://localhost:3000/games/`);
+          const response = await axios.get(
+            `http://localhost:3000/games?page=${page}`
+          );
           console.log(response.data);
           setData(response.data);
 
@@ -50,7 +53,15 @@ const Home = () => {
     };
 
     fetchData();
-  }, [platformFilter]);
+  }, [platformFilter, page]);
+
+  const folowingPage = () => {
+    setPage(page + 1);
+  };
+
+  const previousPage = () => {
+    setPage(page - 1);
+  };
 
   return isLoading ? (
     <span>En cours de chargement...</span>
@@ -80,6 +91,14 @@ const Home = () => {
             </Link>
           );
         })}
+      </div>
+      <div>
+        <button onClick={folowingPage}>Page suivante</button>
+        {page > 1 ? (
+          <button onClick={previousPage}>Page précédente</button>
+        ) : (
+          <div></div>
+        )}
       </div>
     </>
   );
