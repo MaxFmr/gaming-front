@@ -9,6 +9,11 @@ const Home = () => {
   const [platforms, setPlatforms] = useState();
   const [platformFilter, setPlatformFilter] = useState();
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [dateFrom, setDateFrom] = useState();
+  const [dateTo, setDateTo] = useState();
+  const [pageSize, setPageSize] = useState();
+  const [ordering, setOrdering] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +45,9 @@ const Home = () => {
         }
         try {
           const response = await axios.get(
-            `http://localhost:3000/games?page=${page}`
+            `http://localhost:3000/games?page=${page}&search=${search}&dates=${
+              dateFrom ? dateFrom + "," + dateTo : ""
+            }&page_size=${pageSize}&ordering=${ordering}`
           );
           console.log(response.data);
           setData(response.data);
@@ -53,7 +60,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, [platformFilter, page]);
+  }, [platformFilter, page, search, dateTo, pageSize, ordering]);
 
   const folowingPage = () => {
     setPage(page + 1);
@@ -69,8 +76,8 @@ const Home = () => {
     <>
       <select
         onChange={(event) => setPlatformFilter(event.target.value)}
-        name='pets'
-        id='pet-select'
+        name='platforms'
+        id='platform-select'
       >
         <option value=''>--Please choose a platform--</option>
 
@@ -82,6 +89,37 @@ const Home = () => {
           );
         })}
       </select>
+      <select
+        onChange={(event) => setOrdering(event.target.value)}
+        name='platforms'
+        id='platform-select'
+      >
+        <option value=''>--Ordered by :--</option>
+
+        <option value='name'>name</option>
+        <option value='released'>released</option>
+        <option value='added'>added</option>
+        <option value='created'>created</option>
+        <option value='rating'>rating</option>
+      </select>
+      <input
+        type='text'
+        onChange={(event) => {
+          setSearch(event.target.value);
+        }}
+      />
+      <input
+        type='date'
+        onChange={(event) => {
+          setDateFrom(event.target.value);
+        }}
+      />
+      <input
+        type='date'
+        onChange={(event) => {
+          setDateTo(event.target.value);
+        }}
+      />
 
       <div className='container'>
         {data.results.map((games, index) => {
@@ -93,6 +131,14 @@ const Home = () => {
         })}
       </div>
       <div>
+        <select
+          onChange={(event) => setPageSize(event.target.value)}
+          name='page-size'
+          id='size-select'
+        >
+          <option value=''>--Results per page : 20</option>
+          <option value='40'>--Results per page : 40</option>;
+        </select>
         <button onClick={folowingPage}>Page suivante</button>
         {page > 1 ? (
           <button onClick={previousPage}>Page précédente</button>
