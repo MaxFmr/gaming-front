@@ -1,7 +1,81 @@
 /* Other rules */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+button {
+  cursor: pointer;
+}
+
+body {
+  background-color: #17171b;
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+/* welcome Page */
+
+.welcome-header {
+  display: flex;
+  height: 150px;
+  align-items: center;
+  margin: 2%;
+  justify-content: space-between;
+}
+.welcome-header h1 {
+  cursor: pointer;
+}
+.welcome-header button {
+  border: none;
+  color: white;
+  background-color: #17171b;
+  font-size: x-large;
+  margin: 20px;
+}
+.welcome-characters {
+  display: flex;
+}
+
+.welcome-container {
+  border: salmon 2px solid;
+  display: flex;
+}
+
+.halo {
+  height: 600px;
+  width: 230px;
+  margin: auto;
+  object-fit: cover;
+  position: absolute;
+  margin-left: 130px;
+}
+.gta {
+  margin-left: 200px;
+  height: 480px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.welcome-txt {
+  border: skyblue solid 2px;
+}
+
+/* header component */
 
 .header {
-  border: solid 2px black;
+  display: flex;
+  height: 150px;
+  align-items: center;
+  margin: 2%;
+  justify-content: space-between;
+}
+.header h1 {
+  cursor: pointer;
+}
+
+.header button {
+  border: none;
+  color: white;
+  background-color: #17171b;
+  font-size: x-large;
+  margin: 20px;
 }
 
 .container {

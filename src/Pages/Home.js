@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard";
 import { Link } from "react-router-dom";
-
-const Home = () => {
+import Header from "../components/Header";
+const Home = ({ token, setUser }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [platforms, setPlatforms] = useState();
@@ -74,6 +74,8 @@ const Home = () => {
     <span>En cours de chargement...</span>
   ) : (
     <>
+      <Header token={token} setUser={setUser} />
+
       <select
         onChange={(event) => setPlatformFilter(event.target.value)}
         name='platforms'

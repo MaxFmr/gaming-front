@@ -53,7 +53,7 @@ const Login = ({ setUser, token, setUserData }) => {
       <input className='login-button' type='submit' onClick={navigate} />
     </form>
   ) : (
-    <Navigate to='/' />
+    <Navigate to='/home' />
   );
 };
 

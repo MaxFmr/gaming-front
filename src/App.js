@@ -8,6 +8,8 @@ import Favorites from "./Pages/Favorites";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Header from "../src/components/Header";
+import Welcome from "../src/Pages/Welcome";
+
 import Cookies from "js-cookie";
 import { useState } from "react";
 
@@ -25,17 +27,30 @@ function App() {
 
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/game/:id' element={<Game token={token} />} />
+        <Route path='/' element={<Welcome />} />
+
+        <Route
+          path='/home'
+          element={<Home token={token} setUser={setUser} />}
+        />
+        <Route
+          path='/game/:id'
+          element={<Game token={token} setUser={setUser} />}
+        />
         <Route
           path='/login'
           element={<Login token={token} setUser={setUser} />}
         />
         <Route path='/signup' element={<SignUp setUser={setUser} />} />
-        <Route path='/addreview/:id' element={<AddReview token={token} />} />
-        <Route path='/favorites' element={<Favorites token={token} />} />
+        <Route
+          path='/addreview/:id'
+          element={<AddReview token={token} setUser={setUser} />}
+        />
+        <Route
+          path='/favorites'
+          element={<Favorites token={token} setUser={setUser} />}
+        />
       </Routes>
     </Router>
   );
