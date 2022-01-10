@@ -53,6 +53,7 @@ body {
 
 .welcome-container {
   display: flex;
+  justify-content: center;
 }
 
 .halo {

@@ -13,7 +13,7 @@ const Search = ({
           {" "}
           <input
             className='searchbar'
-            placeholder='🔎 Search by name'
+            placeholder='🔎   Search by name'
             type='text'
             onChange={(event) => {
               setSearch(event.target.value);
@@ -57,7 +57,7 @@ const Search = ({
       </div>
       <div>
         <div>
-          <p>From :</p>{" "}
+          <p>Date from :</p>{" "}
           <input
             type='date'
             onChange={(event) => {
