@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import SerieCaroussel from "../components/SerieCaroussel";
 import Reviews from "../components/Reviews";
+import Header from "../components/Header";
 
 const Game = ({ token }) => {
   const [data, setData] = useState();
@@ -65,25 +66,30 @@ const Game = ({ token }) => {
     <span>En cours de chargement...</span>
   ) : (
     <>
+      <Header />
       <div className='game-container'>
-        <button
-          onClick={() => {
-            {
-              token ? navigate(`/addreview/${id}`) : navigate("/login");
-            }
-          }}
-        >
-          Add a review
-        </button>
-        <button
-          onClick={() => {
-            {
-              token ? addFavorite() : navigate("/login");
-            }
-          }}
-        >
-          Add to favorites
-        </button>
+        <div>
+          {" "}
+          <button
+            onClick={() => {
+              {
+                token ? navigate(`/addreview/${id}`) : navigate("/login");
+              }
+            }}
+          >
+            Add a review
+          </button>
+          <button
+            onClick={() => {
+              {
+                token ? addFavorite() : navigate("/login");
+              }
+            }}
+          >
+            Add to favorites
+          </button>
+        </div>
+
         <div className='img-details'>
           <div className='game-image'>
             <div className='percent-appreciation'>

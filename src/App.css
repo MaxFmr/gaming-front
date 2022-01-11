@@ -132,7 +132,6 @@ body {
 
 .search {
   display: flex;
-  /* flex-direction: column; */
   width: 370px;
   margin-right: 50px;
   align-items: center;
@@ -212,6 +211,17 @@ body {
   flex-direction: column;
 }
 
+.game-container button {
+  border: none;
+  border-radius: 15px;
+  color: white;
+
+  height: 30px;
+  width: 180px;
+  margin: 15px;
+  background-color: grey;
+}
+
 .game-image {
   border: pink solid 2px;
   width: 60%;
@@ -268,8 +278,49 @@ body {
   flex-direction: column;
 
   border: cadetblue 2px solid;
-  height: 100%;
+  height: 95%;
 }
 
 .caroussel-card h2 {
+}
+
+/* Reviews Components */
+
+.review {
+  border-bottom: orangered 2px solid;
+  display: flex;
+  align-items: center;
+}
+
+.reviews {
+  border: blueviolet 2px solid;
+}
+
+.likes {
+  border: palegreen 2px solid;
+  width: 5%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.likes button {
+  border: none;
+  background: none;
+}
+.avatar {
+  height: 50px;
+  width: 50px;
+  background-color: grey;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-review {
+  border: indigo 2px Solid;
+  display: flex;
+  width: 85%;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -8,6 +8,9 @@ const Welcome = () => {
   return (
     <div>
       <header className='welcome-header'>
+
+
+
         <div
           onClick={() => {
             navigate("/home");
@@ -22,6 +25,10 @@ const Welcome = () => {
           <button onClick={() => navigate("/signup")}>Sign-Up</button>
         </div>
       </header>
+
+
+
+      
       <div className='welcome-container'>
         <div className='welcome-characters'>
           <img className='halo' src={halo2} alt='spartan' />

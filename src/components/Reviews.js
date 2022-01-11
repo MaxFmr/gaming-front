@@ -61,36 +61,41 @@ const Reviews = ({ id, token }) => {
   };
 
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <span>Loading...</span>
   ) : (
-    <div>
+    <div className='reviews'>
       <h2>Reviews</h2>
 
       {data.map((review, index) => {
         return (
-          <div>
-            <h3>{review.userName}</h3>
-            <h3>{review.note}</h3>
-            <p>{review.review}</p>
-            <button
-              onClick={() => {
-                like(review._id);
-                setLikes(!likes);
-              }}
-            >
-              like
-            </button>
-            <p>{review.likes.length}</p>
-
-            <button
-              onClick={() => {
-                dislike(review._id);
-                setDislikes(!dislikes);
-              }}
-            >
-              dislike
-            </button>
-            <p>{review.dislikes.length}</p>
+          <div className='review'>
+            <div className='user-review'>
+              <div>
+                <div>{review.userName}</div>
+                <img className='avatar' src={review.userAvatar} alt='' />
+                <div>{review.note} / 10 </div>
+              </div>
+              <p>{review.review}</p>
+            </div>
+            <div></div>
+            <div className='likes'>
+              <button
+                onClick={() => {
+                  like(review._id);
+                  setLikes(!likes);
+                }}
+              >
+                👍🏼 {review.likes.length}
+              </button>
+              <button
+                onClick={() => {
+                  dislike(review._id);
+                  setDislikes(!dislikes);
+                }}
+              >
+                👎🏼 {review.dislikes.length}
+              </button>
+            </div>
           </div>
         );
       })}
