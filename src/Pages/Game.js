@@ -71,6 +71,7 @@ const Game = ({ token }) => {
         <div>
           {" "}
           <button
+            className='addbtn'
             onClick={() => {
               {
                 token ? navigate(`/addreview/${id}`) : navigate("/login");
@@ -80,6 +81,7 @@ const Game = ({ token }) => {
             Add a review
           </button>
           <button
+            className='addbtn'
             onClick={() => {
               {
                 token ? addFavorite() : navigate("/login");
@@ -93,13 +95,16 @@ const Game = ({ token }) => {
         <div className='img-details'>
           <div className='game-image'>
             <div className='percent-appreciation'>
+              <h3>RATINGS : </h3>
+
               {data.ratings.map((percent) => {
                 const level = percent.percent;
                 const adjectiv = percent.title;
 
                 return (
-                  <div>
+                  <div className='ratings'>
                     {level} % {adjectiv.toUpperCase()}
+                    {level >= 25 && <span> ✅</span>}
                   </div>
                 );
               })}
@@ -109,7 +114,17 @@ const Game = ({ token }) => {
             <img src={data.background_image_additional} alt='' />
           </div>
           <div className='game-details'>
+            <h3>{data.name}</h3>
+
+            <h3>Platforms</h3>
+            {data.platforms.map((platform) => {
+              return <p>{platform.platform.name}</p>;
+            })}
+            <h3>Description</h3>
             <p>{data.description_raw}</p>
+            <p>Metacritic score : {data.metacritic}</p>
+            <a href={data.metacritic_url}>View on metacritic</a>
+            <a href={data.website}> Official website</a>
           </div>
         </div>
         <SerieCaroussel serie={serie} />

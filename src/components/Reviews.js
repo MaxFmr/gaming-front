@@ -65,17 +65,17 @@ const Reviews = ({ id, token }) => {
   ) : (
     <div className='reviews'>
       <h2>Reviews</h2>
-
+      {data.length === 0 && <p>No review for this game.</p>}
       {data.map((review, index) => {
         return (
           <div className='review'>
             <div className='user-review'>
-              <div>
-                <div>{review.userName}</div>
+              <div className='user'>
                 <img className='avatar' src={review.userAvatar} alt='' />
-                <div>{review.note} / 10 </div>
+                <div>{review.userName} </div>
               </div>
               <p>{review.review}</p>
+              <div>{review.note} / 10 </div>
             </div>
             <div></div>
             <div className='likes'>

@@ -1,5 +1,15 @@
 /* Other rules */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 input::-webkit-input-placeholder {
   color: rgb(210, 204, 204) !important;
 }
@@ -26,6 +36,8 @@ body {
   background-color: #17171b;
   color: white;
   font-family: "Roboto", sans-serif;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* welcome Page */
@@ -112,6 +124,12 @@ body {
 }
 .header h1 {
   cursor: pointer;
+}
+.header-user {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  justify-content: space-between;
 }
 
 .header button {
@@ -204,8 +222,11 @@ body {
 
 /* Game Page */
 
+.addbtn:hover {
+  background-color: white;
+  color: grey;
+}
 .game-container {
-  border: springgreen solid 2px;
   height: 1024px;
   display: flex;
   flex-direction: column;
@@ -223,7 +244,6 @@ body {
 }
 
 .game-image {
-  border: pink solid 2px;
   width: 60%;
   height: 100%;
   display: flex;
@@ -233,36 +253,51 @@ body {
 
 .percent-appreciation {
   position: absolute;
-  width: 40%;
   margin: 10px;
+  color: grey;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 15px;
 }
 
 .game-image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  margin-right: 2px;
+  margin-right: 10px;
   border-radius: 15px;
 }
 
 .game-details {
   width: 40%;
-  border: blue solid 2px;
   display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  overflow: scroll;
+}
+.game-details h3 {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: x-large;
+  color: grey;
+}
+.game-details a {
+  margin: 7px;
+  color: grey;
 }
 
 .img-details {
-  border: black solid 2px;
   display: flex;
   height: 50%;
 }
 
 .serie-caroussel {
-  border: brown 2px solid;
   height: 260px;
   display: flex;
   overflow: scroll;
-  margin: 10px;
+  margin-top: 40px;
 }
 
 .serie-caroussel img {
@@ -277,7 +312,6 @@ body {
   display: flex;
   flex-direction: column;
 
-  border: cadetblue 2px solid;
   height: 95%;
 }
 
@@ -287,22 +321,22 @@ body {
 /* Reviews Components */
 
 .review {
-  border-bottom: orangered 2px solid;
   display: flex;
   align-items: center;
 }
 
-.reviews {
-  border: blueviolet 2px solid;
+.reviews h2 {
+  font-size: xx-large;
+  margin-bottom: 40px;
 }
 
 .likes {
-  border: palegreen 2px solid;
   width: 5%;
   height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 20px;
 }
 
 .likes button {
@@ -310,17 +344,183 @@ body {
   background: none;
 }
 .avatar {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   background-color: grey;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 50%;
 }
 
 .user-review {
-  border: indigo 2px Solid;
+  border-bottom: grey 2px Solid;
   display: flex;
   width: 85%;
   align-items: center;
   justify-content: space-between;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+/* signup */
+.explanation {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5%;
+}
+
+.signup-form {
+  display: flex;
+  align-items: center;
+  border: grey solid 2px;
+  border-radius: 15px;
+  margin: 15px;
+}
+
+.signup-form h3 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: x-large;
+  color: grey;
+}
+
+.signup-form input {
+  height: 30px;
+  width: 170px;
+  margin: 15px;
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding-left: 10px;
+}
+
+.signup-form button {
+  height: 30px;
+  width: 170px;
+  margin: 15px;
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding-left: 10px;
+}
+.signup-button:hover {
+  background-color: white;
+  color: grey;
+}
+.signup-form input:hover {
+  background-color: grey;
+}
+
+/* login */
+.login-form {
+  display: flex;
+  align-items: center;
+  border: grey solid 2px;
+  border-radius: 15px;
+  margin: 15px;
+  height: 500px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form h3 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: x-large;
+  color: grey;
+}
+
+.login-form input {
+  height: 30px;
+  width: 170px;
+  margin: 15px;
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding-left: 10px;
+}
+.login-form button {
+  height: 30px;
+  width: 170px;
+  margin: 15px;
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding-left: 10px;
+}
+.login-button:hover {
+  background-color: white;
+  color: grey;
+}
+/* 
+
+
+.add-review
+
+} */
+
+.add-review {
+  display: flex;
+  align-items: center;
+  border: grey solid 2px;
+  border-radius: 15px;
+  margin: 15px;
+  height: 500px;
+  flex-direction: column;
+  justify-content: center;
+}
+.add-review textarea {
+  height: 250px;
+  width: 400px;
+  background-color: grey;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  border-radius: 15px;
+}
+.add-review h3 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: x-large;
+  color: grey;
+}
+
+.add-review input {
+  height: 30px;
+  width: 170px;
+  margin: 15px;
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding-left: 10px;
+}
+.add-review button {
+  height: 30px;
+  width: 170px;
+  margin: 15px;
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding-left: 10px;
+}
+.login-form input:hover {
+  background-color: grey;
+}
+
+.add-review button:hover {
+  background-color: white;
+  color: grey;
 }

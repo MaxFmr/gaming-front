@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const Login = ({ setUser, token, setUserData }) => {
   const navigate = useNavigate("/");
@@ -25,33 +26,38 @@ const Login = ({ setUser, token, setUserData }) => {
     } catch (error) {
       console.log(error.message);
       if (error.response.status === 401) {
-        setErrorMessage("Mauvais email et/ou mot de passe");
+        setErrorMessage("Wrong email or password.");
       }
     }
   };
 
   return token === null ? (
-    <form className='login-form' onSubmit={handleSubmit}>
-      <h1>Se connecter</h1>
+    <>
+      <Header />
+      <form className='login-form' onSubmit={handleSubmit}>
+        <h3>Login</h3>
 
-      <input
-        type='text'
-        placeholder='Email'
-        onChange={(event) => {
-          setEmail(event.target.value);
-        }}
-      />
-      <input
-        type='password'
-        placeholder='Mot de passe'
-        onChange={(event) => {
-          setPassword(event.target.value);
-          console.log(password);
-        }}
-      />
-      <span style={{ color: "red" }}>{errorMessage}</span>
-      <input className='login-button' type='submit' onClick={navigate} />
-    </form>
+        <input
+          type='text'
+          placeholder='Email'
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
+        <input
+          type='password'
+          placeholder='Mot de passe'
+          onChange={(event) => {
+            setPassword(event.target.value);
+            console.log(password);
+          }}
+        />
+        <span style={{ color: "red" }}>{errorMessage}</span>
+        <button className='login-button' type='submit' onClick={navigate}>
+          Login
+        </button>
+      </form>
+    </>
   ) : (
     <Navigate to='/home' />
   );

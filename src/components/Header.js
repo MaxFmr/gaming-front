@@ -1,8 +1,32 @@
 import { useNavigate } from "react-router";
-import Cookies from "js-cookie";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const Header = ({ token, setUser }) => {
   const navigate = useNavigate();
+
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/consult",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(response.data);
+        setData(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className='header'>
@@ -16,7 +40,13 @@ const Header = ({ token, setUser }) => {
       </div>
       <div>
         {token ? (
-          <>
+          <div className='header-user'>
+            <div>{data && data[0].username} 🟢 </div>
+            <img
+              className='avatar'
+              src={data && data[0].avatar.secure_url}
+              alt=''
+            />
             <button
               onClick={() => {
                 setUser();
@@ -28,7 +58,7 @@ const Header = ({ token, setUser }) => {
             <button onClick={() => navigate("/favorites")}>
               My Collection
             </button>
-          </>
+          </div>
         ) : (
           <div>
             <button onClick={() => navigate("/login")}>Login</button>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
+import Header from "../components/Header";
 
 const AddReview = ({ token }) => {
   const navigate = useNavigate();
@@ -39,25 +40,33 @@ const AddReview = ({ token }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <p>review</p>
-        <textarea
-          onChange={(event) => {
-            setReview(event.target.value);
-          }}
-          cols='30'
-          rows='10'
-        ></textarea>
-        <input
-          type='number'
-          onChange={(event) => {
-            setNote(event.target.value);
-          }}
-        />
-        <button type='submit'>Envoyer</button>
-      </form>
-    </div>
+    <>
+      <Header />
+      <div className='add-review'>
+        <form onSubmit={handleSubmit}>
+          <h3>review</h3>
+          <textarea
+            onChange={(event) => {
+              setReview(event.target.value);
+            }}
+            cols='30'
+            rows='10'
+            required
+          ></textarea>
+          <h3>Note / 10</h3>
+          <input
+            type='number'
+            onChange={(event) => {
+              setNote(event.target.value);
+            }}
+            max='10'
+            min='0'
+            required
+          />
+          <button type='submit'>add</button>
+        </form>
+      </div>
+    </>
   );
 };
 
