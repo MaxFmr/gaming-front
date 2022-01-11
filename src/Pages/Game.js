@@ -5,7 +5,7 @@ import SerieCaroussel from "../components/SerieCaroussel";
 import Reviews from "../components/Reviews";
 import Header from "../components/Header";
 
-const Game = ({ token }) => {
+const Game = ({ token, setUser }) => {
   const [data, setData] = useState();
   const [serie, setSerie] = useState();
 
@@ -66,7 +66,7 @@ const Game = ({ token }) => {
     <span>En cours de chargement...</span>
   ) : (
     <>
-      <Header />
+      <Header token={token} setUser={setUser} />
       <div className='game-container'>
         <div>
           {" "}

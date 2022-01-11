@@ -26,7 +26,7 @@ const Header = ({ token, setUser }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [token]);
 
   return (
     <div className='header'>

@@ -1,9 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Header from "../components/Header";
+import { Navigate, useNavigate } from "react-router";
 
-const Favorites = ({ token }) => {
+const Favorites = ({ token, setUser }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,13 +35,22 @@ const Favorites = ({ token }) => {
     <span>En cours de chargement...</span>
   ) : (
     <div>
-      {data.map((favorites, index) => {
-        return (
-          <div key={index}>
-            <p>{favorites.name}</p>
-          </div>
-        );
-      })}
+      <Header token={token} setUser={setUser} />
+      <div className='container'>
+        {data.map((games, index) => {
+          return (
+            <div
+              onClick={() => {
+                navigate(`/game/${games.game.id}`);
+              }}
+              className='game-card'
+            >
+              <h2>{games.name}</h2>
+              <img src={games.img} alt=''></img>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
