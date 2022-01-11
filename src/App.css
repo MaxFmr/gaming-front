@@ -217,7 +217,8 @@ body {
 .game-card h2 {
   position: absolute;
   margin: 5px;
-  font-size: x-large;
+  font-size: large;
+  overflow: hidden;
 }
 
 /* Game Page */
