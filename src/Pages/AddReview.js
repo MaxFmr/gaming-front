@@ -41,7 +41,7 @@ const AddReview = ({ token }) => {
 
   return (
     <>
-      <Header />
+      <Header token={token} />
       <div className='add-review'>
         <form onSubmit={handleSubmit}>
           <h3>review</h3>

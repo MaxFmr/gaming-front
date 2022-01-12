@@ -2,10 +2,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { Navigate, useNavigate } from "react-router";
+import FavoriteCard from "../components/FavoriteCard";
 
 const Favorites = ({ token, setUser }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [deleteClick, setDeleteClick] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,8 +31,7 @@ const Favorites = ({ token, setUser }) => {
       }
     };
     fetchData();
-  }, []);
-
+  }, [deleteClick]);
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
@@ -39,15 +40,12 @@ const Favorites = ({ token, setUser }) => {
       <div className='container'>
         {data.map((games, index) => {
           return (
-            <div
-              onClick={() => {
-                navigate(`/game/${games.game.id}`);
-              }}
-              className='game-card'
-            >
-              <h2>{games.name}</h2>
-              <img src={games.img} alt=''></img>
-            </div>
+            <FavoriteCard
+              games={games}
+              index={index}
+              deleteClick={deleteClick}
+              setDeleteClick={setDeleteClick}
+            />
           );
         })}
       </div>
