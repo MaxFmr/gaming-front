@@ -8,7 +8,7 @@ const GameCard = ({ id, games }) => {
   const fetchTrailer = async (gameId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/games/${gameId}/movies`
+        `https://gamingbymax.herokuapp.com/games/${gameId}/movies`
       );
       setMovie(response.data.results);
       console.log(movie);

@@ -10,7 +10,9 @@ const Reviews = ({ id, token }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/review/${id}`);
+        const response = await axios.get(
+          `https://gamingbymax.herokuapp.com/review/${id}`
+        );
         console.log(response.data);
         setData(response.data);
         setLikes(response.data.likes);
@@ -25,7 +27,7 @@ const Reviews = ({ id, token }) => {
   const like = async (_id) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/review/like`,
+        `https://gamingbymax.herokuapp.com/review/like`,
         {
           _id,
         },
@@ -44,7 +46,7 @@ const Reviews = ({ id, token }) => {
   const dislike = async (_id) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/review/dislike`,
+        `https://gamingbymax.herokuapp.com/review/dislike`,
         {
           _id,
         },

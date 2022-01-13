@@ -6,7 +6,7 @@ const FavoriteCard = ({ games, index, setDeleteClick, deleteClick }) => {
 
   const deleteFavorite = async (id) => {
     try {
-      await axios.post("http://localhost:3000/favorites/delete", {
+      await axios.post("https://gamingbymax.herokuapp.com/favorites/delete", {
         game_id: id,
       });
     } catch (error) {
