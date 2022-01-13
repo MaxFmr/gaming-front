@@ -21,7 +21,7 @@ const Home = ({ token, setUser }) => {
       if (platformFilter !== undefined) {
         try {
           const response = await axios.get(
-            `http://localhost:3000/games/?platforms=${platformFilter}`
+            `https://gamingbymax.herokuapp.com/games/?platforms=${platformFilter}`
           );
           console.log(response.data);
           setData(response.data);
@@ -29,7 +29,9 @@ const Home = ({ token, setUser }) => {
           console.log(error.message);
         }
         try {
-          const response = await axios.get("http://localhost:3000/platforms");
+          const response = await axios.get(
+            "https://gamingbymax.herokuapp.com/platforms"
+          );
           console.log(response.data);
           setPlatforms(response.data);
           setIsLoading(false);
@@ -38,7 +40,9 @@ const Home = ({ token, setUser }) => {
         }
       } else {
         try {
-          const response = await axios.get("http://localhost:3000/platforms");
+          const response = await axios.get(
+            "https://gamingbymax.herokuapp.com/platforms"
+          );
           console.log(response.data);
           setPlatforms(response.data);
         } catch (error) {
@@ -46,7 +50,7 @@ const Home = ({ token, setUser }) => {
         }
         try {
           const response = await axios.get(
-            `http://localhost:3000/games?page=${page}&search=${search}&dates=${
+            `https://gamingbymax.herokuapp.com/games?page=${page}&search=${search}&dates=${
               dateFrom ? dateFrom + "," + dateTo : ""
             }&page_size=${pageSize}&ordering=${ordering}`
           );
