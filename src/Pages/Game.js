@@ -71,7 +71,6 @@ const Game = ({ token, setUser }) => {
       <Header token={token} setUser={setUser} />
       <div className='game-container'>
         <div>
-          {" "}
           <button
             className='addbtn'
             onClick={() => {

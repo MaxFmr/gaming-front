@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Review from "./Review";
 
 const Reviews = ({ id, token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [likes, setLikes] = useState(false);
+
+  const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(false);
 
   useEffect(() => {
@@ -15,14 +17,13 @@ const Reviews = ({ id, token }) => {
         );
         console.log(response.data);
         setData(response.data);
-        setLikes(response.data.likes);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchData();
-  }, [likes]);
+  }, [likes, dislikes]);
 
   const like = async (_id) => {
     try {
@@ -70,35 +71,16 @@ const Reviews = ({ id, token }) => {
       {data.length === 0 && <p>No review for this game.</p>}
       {data.map((review, index) => {
         return (
-          <div className='review'>
-            <div className='user-review'>
-              <div className='user'>
-                <img className='avatar' src={review.userAvatar} alt='' />
-                <div>{review.userName} </div>
-              </div>
-              <p>{review.review}</p>
-              <div>{review.note} / 10 </div>
-            </div>
-            <div></div>
-            <div className='likes'>
-              <button
-                onClick={() => {
-                  like(review._id);
-                  setLikes(!likes);
-                }}
-              >
-                👍🏼 {review.likes.length}
-              </button>
-              <button
-                onClick={() => {
-                  dislike(review._id);
-                  setDislikes(!dislikes);
-                }}
-              >
-                👎🏼 {review.dislikes.length}
-              </button>
-            </div>
-          </div>
+          <Review
+            review={review}
+            index={index}
+            likes={likes}
+            setLikes={setLikes}
+            dislikes={dislikes}
+            setDislikes={setDislikes}
+            like={like}
+            dislike={dislike}
+          />
         );
       })}
     </div>

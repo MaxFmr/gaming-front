@@ -1,15 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
-import { Navigate, useNavigate } from "react-router";
 import FavoriteCard from "../components/FavoriteCard";
 
 const Favorites = ({ token, setUser }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [deleteClick, setDeleteClick] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {

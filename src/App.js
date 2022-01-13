@@ -7,7 +7,6 @@ import AddReview from "./Pages/AddReview";
 import Favorites from "./Pages/Favorites";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import Header from "../src/components/Header";
 import Welcome from "../src/Pages/Welcome";
 
 import Cookies from "js-cookie";
