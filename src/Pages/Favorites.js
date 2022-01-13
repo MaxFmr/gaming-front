@@ -15,7 +15,7 @@ const Favorites = ({ token, setUser }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/favorites",
+          "https://gamingbymax.herokuapp.com/favorites",
 
           {
             headers: {

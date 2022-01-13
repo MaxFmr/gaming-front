@@ -11,7 +11,7 @@ const Header = ({ token, setUser }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/consult",
+          "https://gamingbymax.herokuapp.com/consult",
           {},
           {
             headers: {

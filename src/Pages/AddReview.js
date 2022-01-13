@@ -18,7 +18,7 @@ const AddReview = ({ token }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/review/create",
+        "https://gamingbymax.herokuapp.com/review/create",
         {
           review: review,
           note,

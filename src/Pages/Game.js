@@ -18,7 +18,9 @@ const Game = ({ token, setUser }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/game/${id}`);
+        const response = await axios.get(
+          `https://gamingbymax.herokuapp.com/game/${id}`
+        );
         console.log(response.data);
         setData(response.data);
       } catch (error) {
@@ -26,7 +28,7 @@ const Game = ({ token, setUser }) => {
       }
       try {
         const response = await axios.get(
-          `http://localhost:3000/games/${id}/game-series`
+          `https://gamingbymax.herokuapp.com/games/${id}/game-series`
         );
         setSerie(response.data);
         setIsLoading(false);
@@ -41,7 +43,7 @@ const Game = ({ token, setUser }) => {
   const addFavorite = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/favorites/create",
+        "https://gamingbymax.herokuapp.com/favorites/create",
         {
           game: { data },
           img: data.background_image,
