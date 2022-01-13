@@ -42,7 +42,7 @@ const Signup = ({ setUser }) => {
         formData.append("password", password);
 
         const response = await axios.post(
-          "http://localhost:3000/signup",
+          "https://gamingbymax.herokuapp.com/signup",
 
           formData
         );

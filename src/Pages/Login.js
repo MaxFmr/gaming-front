@@ -14,10 +14,13 @@ const Login = ({ setUser, token, setUserData }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/login", {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://gamingbymax.herokuapp.com/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
       if (response.data.token) {
         console.log(response);
         setUser(response.data.token);
