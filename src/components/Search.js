@@ -18,7 +18,7 @@ const Search = ({
             onChange={(event) => {
               setSearch(event.target.value);
             }}
-          />{" "}
+          />
         </div>
 
         <div>
@@ -36,10 +36,9 @@ const Search = ({
                 </option>
               );
             })}
-          </select>{" "}
+          </select>
         </div>
         <div>
-          {" "}
           <select
             onChange={(event) => setOrdering(event.target.value)}
             name='platforms'

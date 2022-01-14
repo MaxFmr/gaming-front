@@ -127,11 +127,11 @@ const Signup = ({ setUser }) => {
             </div>
             <div>
               <span>Your password must contain at least :</span>
-              <p>one uppercase letter</p>
+              <p>one upper case letter</p>
               {password.match(/[A-Z]/g) && (
                 <span style={{ color: "green" }}>ok</span>
               )}
-              <p>one lowercase letter</p>
+              <p>one lower case letter</p>
               {password.match(/[a-z]/g) && (
                 <span style={{ color: "green" }}>ok</span>
               )}
