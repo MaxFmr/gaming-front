@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const GameCard = ({ id, games }) => {
+const GameCard = ({ id, games, isLoading }) => {
   const [over, setOver] = useState(false);
   const [movie, setMovie] = useState();
 
@@ -11,16 +11,15 @@ const GameCard = ({ id, games }) => {
         `https://gamingbymax.herokuapp.com/games/${gameId}/movies`
       );
       setMovie(response.data.results);
-      console.log(movie);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  return (
+  return isLoading ? (
+    <div>En cours de chargement</div>
+  ) : (
     <div>
-      {games === undefined ? <div>loading...</div> : <div></div>}
-
       <div
         onMouseEnter={() => {
           setOver(true);

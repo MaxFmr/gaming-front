@@ -23,7 +23,6 @@ const Home = ({ token, setUser }) => {
           const response = await axios.get(
             `https://gamingbymax.herokuapp.com/games/?platforms=${platformFilter}`
           );
-          console.log(response.data);
           setData(response.data);
         } catch (error) {
           console.log(error.message);
@@ -32,7 +31,6 @@ const Home = ({ token, setUser }) => {
           const response = await axios.get(
             "https://gamingbymax.herokuapp.com/platforms"
           );
-          console.log(response.data);
           setPlatforms(response.data);
           setIsLoading(false);
         } catch (error) {
@@ -43,7 +41,6 @@ const Home = ({ token, setUser }) => {
           const response = await axios.get(
             "https://gamingbymax.herokuapp.com/platforms"
           );
-          console.log(response.data);
           setPlatforms(response.data);
         } catch (error) {
           console.log(error.message);
@@ -54,7 +51,6 @@ const Home = ({ token, setUser }) => {
               dateFrom ? dateFrom + "," + dateTo : ""
             }&page_size=${pageSize}&ordering=${ordering}`
           );
-          console.log(response.data);
           setData(response.data);
 
           setIsLoading(false);
@@ -69,10 +65,12 @@ const Home = ({ token, setUser }) => {
 
   const folowingPage = () => {
     setPage(page + 1);
+    setIsLoading(true);
   };
 
   const previousPage = () => {
     setPage(page - 1);
+    setIsLoading(true);
   };
 
   return isLoading ? (
