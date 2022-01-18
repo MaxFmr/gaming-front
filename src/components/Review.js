@@ -1,7 +1,15 @@
 import { useState } from "react";
 
-const Review = ({ review, index, like, dislike }) => {
-  const [likes, setLikes] = useState(initialState);
+const Review = ({
+  review,
+  index,
+  like,
+  dislike,
+  setLikes,
+  likes,
+  dislikes,
+  setDislikes,
+}) => {
   return (
     <div key={index} className='review'>
       <div className='user-review'>

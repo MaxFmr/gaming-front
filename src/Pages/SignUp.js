@@ -18,8 +18,7 @@ const Signup = ({ setUser }) => {
       password.match(/[0-9]/g) &&
       password.match(/[a-z]/g) &&
       password.match(/[A-Z]/g) &&
-      password.match(/[^a-zA-Z\d]/g) &&
-      password.length >= 8
+      password.length > 6
     ) {
       setPasswordValidate(true);
     }
@@ -139,12 +138,9 @@ const Signup = ({ setUser }) => {
               {password.match(/[0-9]/g) && (
                 <span style={{ color: "green" }}>ok</span>
               )}
-              <p>one special character</p>
-              {password.match(/[^a-zA-Z\d]/g) && (
-                <span style={{ color: "green" }}>ok</span>
-              )}
+
               <p>8 characters</p>
-              {password.length >= 8 && (
+              {password.length > 6 && (
                 <span style={{ color: "green" }}>ok</span>
               )}
               {error ? (

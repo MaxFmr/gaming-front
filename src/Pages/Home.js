@@ -100,24 +100,24 @@ const Home = ({ token, setUser }) => {
             </Link>
           );
         })}
-        {data.count > 0 && (
-          <div className='search'>
-            {data.count >= 20 && (
-              <select
-                onChange={(event) => setPageSize(event.target.value)}
-                name='page-size'
-                id='size-select'
-              >
-                <option value=''>Results per page : 20</option>
-                <option value='40'>Results per page : 40</option>;
-              </select>
-            )}
-
-            {page > 1 ? <button onClick={previousPage}>⬅</button> : <div></div>}
-            {data.count >= 20 && <button onClick={folowingPage}>Next</button>}
-          </div>
-        )}
       </div>
+      {data.count > 0 && (
+        <div className='search'>
+          {data.count >= 20 && (
+            <select
+              onChange={(event) => setPageSize(event.target.value)}
+              name='page-size'
+              id='size-select'
+            >
+              <option value=''>Results per page : 20</option>
+              <option value='40'>Results per page : 40</option>;
+            </select>
+          )}
+
+          {page > 1 ? <button onClick={previousPage}>⬅</button> : <div></div>}
+          {data.count >= 20 && <button onClick={folowingPage}>Next</button>}
+        </div>
+      )}
     </>
   );
 };
