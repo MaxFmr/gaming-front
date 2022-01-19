@@ -39,7 +39,30 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+/* HERO */
 
+.hero {
+  margin-bottom: 50px;
+  display: flex;
+  -webkit-filter: invert(20%); /* Chrome, Safari, Opera */
+  filter: invert(20%);
+}
+
+.hero-img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+
+  z-index: 0;
+}
+.hero h2 {
+  position: absolute;
+  color: black;
+  z-index: 1;
+  font-size: xx-large;
+  font-weight: bold;
+  margin-left: 5px;
+}
 /* welcome Page */
 
 .welcome-header {

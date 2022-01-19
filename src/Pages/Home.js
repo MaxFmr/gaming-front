@@ -4,6 +4,8 @@ import GameCard from "../components/GameCard";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Search from "../components/Search";
+import Hero from "../components/Hero";
+
 const Home = ({ token, setUser }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -78,6 +80,7 @@ const Home = ({ token, setUser }) => {
   ) : (
     <>
       <Header token={token} setUser={setUser} />
+      <Hero data={data} />
 
       <div className='container'>
         <Search
