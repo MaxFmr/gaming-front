@@ -10,7 +10,6 @@ const Search = ({
     <div className='search'>
       <div>
         <div>
-          {" "}
           <input
             className='searchbar'
             placeholder='🔎   Search by name'
@@ -27,7 +26,7 @@ const Search = ({
             name='platforms'
             id='platform-select'
           >
-            <option value=''>Please choose a platform</option>
+            <option value=''>Choose a platform</option>
 
             {platforms.results.map((platform, index) => {
               return (
@@ -54,7 +53,7 @@ const Search = ({
           </select>
         </div>
       </div>
-      <div>
+      <div className='dates'>
         <div>
           <p>Date from :</p>{" "}
           <input

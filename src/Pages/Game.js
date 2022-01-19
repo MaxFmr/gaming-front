@@ -21,7 +21,6 @@ const Game = ({ token, setUser }) => {
         const response = await axios.get(
           `https://gamingbymax.herokuapp.com/game/${id}`
         );
-        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.log(error.message);

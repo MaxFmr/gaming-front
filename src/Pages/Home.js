@@ -100,7 +100,7 @@ const Home = ({ token, setUser }) => {
         })}
       </div>
       {data.count > 0 && (
-        <div className='search'>
+        <div className='paginate'>
           {data.count >= 20 && (
             <select
               onChange={(event) => setPageSize(event.target.value)}

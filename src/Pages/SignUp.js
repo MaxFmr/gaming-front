@@ -45,7 +45,6 @@ const Signup = ({ setUser }) => {
 
           formData
         );
-        console.log(response.data);
         setError(response.data.errorMessage);
 
         if (response.data.token) {

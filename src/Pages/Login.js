@@ -22,7 +22,6 @@ const Login = ({ setUser, token, setUserData }) => {
         }
       );
       if (response.data.token) {
-        console.log(response);
         setUser(response.data.token);
         setUserData(response.data);
       }
@@ -52,7 +51,6 @@ const Login = ({ setUser, token, setUserData }) => {
           placeholder='Mot de passe'
           onChange={(event) => {
             setPassword(event.target.value);
-            console.log(password);
           }}
         />
         <span style={{ color: "red" }}>{errorMessage}</span>

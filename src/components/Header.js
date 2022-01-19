@@ -19,7 +19,6 @@ const Header = ({ token, setUser }) => {
             },
           }
         );
-        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.log(error.message);

@@ -11,6 +11,7 @@ import Welcome from "../src/Pages/Welcome";
 
 import Cookies from "js-cookie";
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -51,6 +52,7 @@ function App() {
           element={<Favorites token={token} setUser={setUser} />}
         />
       </Routes>
+      <Footer />
     </Router>
   );
 }

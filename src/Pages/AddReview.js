@@ -30,7 +30,6 @@ const AddReview = ({ token }) => {
           },
         }
       );
-      console.log(response.data);
       response.data.message === "review created"
         ? navigate(`/game/${id}`)
         : alert(response.data.message);

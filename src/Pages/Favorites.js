@@ -20,7 +20,6 @@ const Favorites = ({ token, setUser }) => {
             },
           }
         );
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
