@@ -79,46 +79,53 @@ const Home = ({ token, setUser }) => {
     <span>Loading...</span>
   ) : (
     <>
-      <Header token={token} setUser={setUser} />
-      <Hero data={data} />
-
-      <div className='container'>
-        <Search
-          setSearch={setSearch}
-          setPlatformFilter={setPlatformFilter}
-          platforms={platforms}
-          setOrdering={setOrdering}
-          setDateFrom={setDateFrom}
-          setDateTo={setDateTo}
+      <div>
+        <Header token={token} setUser={setUser} />
+        <Hero
+          page={page}
+          search={search}
+          dateFrom={dateFrom}
+          dateTo={dateTo}
+          pageSize={pageSize}
+          ordering={ordering}
         />
-        {data.count === 0 && (
-          <div>No game's matching with your research...</div>
-        )}
-        {data.results.map((games, index) => {
-          return (
-            <Link to={`/game/${games.id}`}>
-              <GameCard games={games} id={games.slug} key={index} />
-            </Link>
-          );
-        })}
-      </div>
-      {data.count > 0 && (
-        <div className='paginate'>
-          {data.count >= 20 && (
-            <select
-              onChange={(event) => setPageSize(event.target.value)}
-              name='page-size'
-              id='size-select'
-            >
-              <option value=''>Results per page : 20</option>
-              <option value='40'>Results per page : 40</option>;
-            </select>
-          )}
 
-          {page > 1 ? <button onClick={previousPage}>⬅</button> : <div></div>}
-          {data.count >= 20 && <button onClick={folowingPage}>Next</button>}
+        <div className='container'>
+          <Search
+            setSearch={setSearch}
+            setPlatformFilter={setPlatformFilter}
+            platforms={platforms}
+            setOrdering={setOrdering}
+            setDateFrom={setDateFrom}
+            setDateTo={setDateTo}
+          />
+          {data.count === 0 && <div>No game matches with research...</div>}
+          {data.results.map((games, index) => {
+            return (
+              <Link to={`/game/${games.id}`}>
+                <GameCard games={games} id={games.slug} key={index} />
+              </Link>
+            );
+          })}
         </div>
-      )}
+        {data.count > 0 && (
+          <div className='paginate'>
+            {data.count >= 20 && (
+              <select
+                onChange={(event) => setPageSize(event.target.value)}
+                name='page-size'
+                id='size-select'
+              >
+                <option value=''>Results per page : 20</option>
+                <option value='40'>Results per page : 40</option>;
+              </select>
+            )}
+
+            {page > 1 ? <button onClick={previousPage}>⬅</button> : <div></div>}
+            {data.count >= 20 && <button onClick={folowingPage}>Next</button>}
+          </div>
+        )}
+      </div>
     </>
   );
 };
